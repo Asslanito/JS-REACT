@@ -62,7 +62,7 @@ No private contact information, phone numbers, addresses, or API keys are includ
 
 ## Submission
 
-Attach the repository URL, live GitHub Pages URL, and the browser screenshot supplied with the project. Press Turn In before the deadline shown by the course platform: September 24, 2026 at 3:00 PM. Check the platform's timezone if it differs from your device.
+Attach the repository URL, live GitHub Pages URL, and [the browser screenshot](docs/screenshot.png). Press Turn In before the deadline shown by the course platform: September 24, 2026 at 3:00 PM. Check the platform's timezone if it differs from your device.
 
 See `DEFENSE-RU.md` for an explanation of the components, props, state, and deployment.
 
