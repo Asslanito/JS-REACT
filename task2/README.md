@@ -2,7 +2,7 @@
 
 A personal introduction for a student learning JavaScript and React. A warm, responsive single-page layout with an original SVG monogram, an About Me section, project filtering, and safe public contact information.
 
-[Live application](https://asslanito.github.io/aslan-react-portfolio/task2/) · [Repository](https://github.com/Asslanito/aslan-react-portfolio)
+[Live application](https://asslanito.github.io/JS-REACT/task2/) · [Repository](https://github.com/Asslanito/JS-REACT)
 
 ## Run locally
 

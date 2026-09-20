@@ -2,10 +2,10 @@
 
 Один репозиторий, отдельная папка для каждого задания.
 
-| Задание                                 | Код             | Работающий сайт                                                     |
-| --------------------------------------- | --------------- | ------------------------------------------------------------------- |
-| Task 1 — Async Café, vanilla JavaScript | [task1](task1/) | [Открыть](https://asslanito.github.io/aslan-react-portfolio/task1/) |
-| Task 2 — личная страница на React       | [task2](task2/) | [Открыть](https://asslanito.github.io/aslan-react-portfolio/task2/) |
+| Задание                                 | Код             | Работающий сайт                                        |
+| --------------------------------------- | --------------- | ------------------------------------------------------ |
+| Task 1 — Async Café, vanilla JavaScript | [task1](task1/) | [Открыть](https://asslanito.github.io/JS-REACT/task1/) |
+| Task 2 — личная страница на React       | [task2](task2/) | [Открыть](https://asslanito.github.io/JS-REACT/task2/) |
 
 ## Структура
 

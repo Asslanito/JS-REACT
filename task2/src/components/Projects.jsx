@@ -8,9 +8,8 @@ const projects = [
     category: 'INTERACTIVE EXPERIMENT',
     description:
       'A coffee order that makes closures, promises, and the event loop a little easier to understand.',
-    url: 'https://asslanito.github.io/aslan-react-portfolio/task1/',
-    source:
-      'https://github.com/Asslanito/aslan-react-portfolio/tree/main/task1',
+    url: 'https://asslanito.github.io/JS-REACT/task1/',
+    source: 'https://github.com/Asslanito/JS-REACT/tree/main/task1',
   },
   {
     title: 'My little corner of the web',
@@ -18,9 +17,8 @@ const projects = [
     category: 'PERSONAL WEBSITE',
     description:
       'The page you are on. A responsive introduction built with React components and a bit of personality.',
-    url: 'https://asslanito.github.io/aslan-react-portfolio/task2/',
-    source:
-      'https://github.com/Asslanito/aslan-react-portfolio/tree/main/task2',
+    url: 'https://asslanito.github.io/JS-REACT/task2/',
+    source: 'https://github.com/Asslanito/JS-REACT/tree/main/task2',
   },
 ]
 

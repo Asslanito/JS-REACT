@@ -2,7 +2,7 @@
 
 A small vanilla JavaScript project: order a coffee and follow the actual execution order of synchronous functions, Promise reactions, microtasks, and timer callbacks.
 
-[Live application](https://asslanito.github.io/aslan-react-portfolio/task1/) · [Repository](https://github.com/Asslanito/aslan-react-portfolio)
+[Live application](https://asslanito.github.io/JS-REACT/task1/) · [Repository](https://github.com/Asslanito/JS-REACT)
 
 ## Run locally
 
