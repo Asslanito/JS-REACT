@@ -1,79 +1,40 @@
-# JS REACT — учебные задания
+# JS REACT
 
-Один репозиторий, отдельная папка для каждого задания.
+Учебные задания по JavaScript и React.
 
-| Задание                                 | Код             | Работающий сайт                                        |
-| --------------------------------------- | --------------- | ------------------------------------------------------ |
-| Task 1 — Async Café, vanilla JavaScript | [task1](task1/) | [Открыть](https://asslanito.github.io/JS-REACT/task1/) |
-| Task 2 — личная страница на React       | [task2](task2/) | [Открыть](https://asslanito.github.io/JS-REACT/task2/) |
+| Задание                                                                                  | Код             | Сайт                                                   |
+| ---------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------ |
+| Task 1 — Async Café: замыкания, стек вызовов, Promise, async/await, задачи и микрозадачи | [task1](task1/) | [Открыть](https://asslanito.github.io/JS-REACT/task1/) |
+| Task 2 — личная страница на React                                                        | [task2](task2/) | [Открыть](https://asslanito.github.io/JS-REACT/task2/) |
 
-## Структура
+## Запуск
 
-```text
-JS REACT/
-  task1/
-    src/
-    tests/
-    index.html
-    package.json
-    DEFENSE-RU.md
-  task2/
-    src/
-    public/
-    docs/screenshot.png
-    index.html
-    package.json
-    DEFENSE-RU.md
-  scripts/build.mjs
-  .github/workflows/deploy.yml
-  package.json
-  SUBMISSION.md
-```
-
-Открывай папку `JS REACT` в VS Code. Для следующего задания можно создать рядом `task3`.
-
-## Установка
-
-Нужен Node.js 24 LTS. Выполни в корне репозитория:
+Требуется Node.js 24. В корне проекта:
 
 ```sh
 npm ci
 npm run setup
 ```
 
-У каждого задания свои зависимости и lock-файл. Внутри task1 и task2 нет отдельных Git-репозиториев.
-
-## Запуск
+Первое задание:
 
 ```sh
 npm run dev:task1
 ```
 
-Первое задание откроется по адресу http://127.0.0.1:5174.
-
-Во втором терминале:
+Второе задание:
 
 ```sh
 npm run dev:task2
 ```
 
-Второе задание откроется по адресу http://127.0.0.1:5175. Команда `npm run dev` также запускает второе задание.
-
-## Проверки и сборка
+## Проверка и сборка
 
 ```sh
 npm run check
 npm run build
-npm run preview
 ```
 
-`check` проверяет форматирование, тесты JavaScript и ESLint для React. Сборка публикует task1 и task2 на одном GitHub Pages-сайте. Корневой адрес сайта также показывает React-страницу, чтобы существующая ссылка продолжала работать.
+Оба задания публикуются на GitHub Pages через `.github/workflows/deploy.yml`.
 
-## Подготовка к защите и сдача
-
-- [Объяснение первого задания](task1/DEFENSE-RU.md)
-- [Объяснение второго задания](task2/DEFENSE-RU.md)
-- [Скриншот React-приложения](task2/docs/screenshot.png)
-- [Все ссылки для сдачи](SUBMISSION.md)
-
-Дополнительное вложение к первому заданию в чате не было предоставлено. Проект покрывает темы из присланного текста задания.
+[Скриншот React-приложения](task2/docs/screenshot.png)
