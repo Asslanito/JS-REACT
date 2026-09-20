@@ -1,4 +1,4 @@
-# JavaScript & React — учебные задания
+# JS REACT — учебные задания
 
 Один репозиторий, отдельная папка для каждого задания.
 
@@ -10,7 +10,7 @@
 ## Структура
 
 ```text
-JavaScript-React/
+JS REACT/
   task1/
     src/
     tests/
@@ -30,7 +30,7 @@ JavaScript-React/
   SUBMISSION.md
 ```
 
-Открывай папку `JavaScript-React` в VS Code. Для следующего задания можно создать рядом `task3`.
+Открывай папку `JS REACT` в VS Code. Для следующего задания можно создать рядом `task3`.
 
 ## Установка
 
