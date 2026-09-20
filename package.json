@@ -1,29 +1,22 @@
 {
-  "name": "aslan-react-portfolio",
+  "name": "javascript-react-assignments",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview --host 127.0.0.1",
+    "setup": "npm --prefix task1 ci && npm --prefix task2 ci",
+    "dev": "npm run dev:task2",
+    "dev:task1": "npm --prefix task1 run dev -- --port 5174 --strictPort",
+    "dev:task2": "npm --prefix task2 run dev -- --port 5175 --strictPort",
+    "test": "npm --prefix task1 test",
+    "lint": "npm --prefix task2 run lint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  },
-  "dependencies": {
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm test && npm run lint",
+    "build": "node scripts/build.mjs",
+    "preview": "node task2/node_modules/vite/bin/vite.js preview --host 127.0.0.1"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@vitejs/plugin-react": "^6.1.1",
-    "eslint": "^10.11.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.7",
-    "globals": "^17.12.0",
-    "prettier": "^3.9.8",
-    "vite": "^8.3.0"
+    "prettier": "^3.9.8"
   }
 }

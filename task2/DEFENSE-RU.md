@@ -48,7 +48,7 @@ Grid и Flexbox управляют расположением блоков. Medi
 
 ## GitHub Pages
 
-Исходный код хранится в GitHub. Workflow в `.github/workflows/deploy.yml` запускается при push в `main`: `npm ci` устанавливает зависимости по lock-файлу, проверки ищут ошибки, `npm run build` создаёт `dist`. GitHub Pages публикует содержимое сборки.
+Исходный код хранится в GitHub. Workflow в `../.github/workflows/deploy.yml` запускается при push в `main`: `npm ci` устанавливает зависимости по lock-файлу, проверки ищут ошибки, `npm run build` создаёт `dist`. Общий скрипт scripts/build.mjs в корне объединяет сборки task1 и task2. GitHub Pages публикует их на одном сайте в разных подпапках.
 
 В `vite.config.js` используется `base: './'`, чтобы ссылки на файлы работали и внутри пути репозитория. SVG подключён через `import.meta.env.BASE_URL`.
 

@@ -1,76 +1,79 @@
-# Aslan — Personal React SPA
+# JavaScript & React — учебные задания
 
-A personal introduction for a student learning JavaScript and React. A warm, responsive single-page layout with an original SVG monogram, an About Me section, project filtering, and safe public contact information.
+Один репозиторий, отдельная папка для каждого задания.
 
-[Live application](https://asslanito.github.io/aslan-react-portfolio/) · [Repository](https://github.com/Asslanito/aslan-react-portfolio)
+| Задание                                 | Код             | Работающий сайт                                                     |
+| --------------------------------------- | --------------- | ------------------------------------------------------------------- |
+| Task 1 — Async Café, vanilla JavaScript | [task1](task1/) | [Открыть](https://asslanito.github.io/aslan-react-portfolio/task1/) |
+| Task 2 — личная страница на React       | [task2](task2/) | [Открыть](https://asslanito.github.io/aslan-react-portfolio/task2/) |
 
-## Run locally
+## Структура
+
+```text
+JavaScript-React/
+  task1/
+    src/
+    tests/
+    index.html
+    package.json
+    DEFENSE-RU.md
+  task2/
+    src/
+    public/
+    docs/screenshot.png
+    index.html
+    package.json
+    DEFENSE-RU.md
+  scripts/build.mjs
+  .github/workflows/deploy.yml
+  package.json
+  SUBMISSION.md
+```
+
+Открывай папку `JavaScript-React` в VS Code. Для следующего задания можно создать рядом `task3`.
+
+## Установка
+
+Нужен Node.js 24 LTS. Выполни в корне репозитория:
 
 ```sh
 npm ci
-npm run dev
+npm run setup
 ```
 
-Use Node.js 24 LTS or a compatible version supported by Vite. Open the address printed in the terminal.
+У каждого задания свои зависимости и lock-файл. Внутри task1 и task2 нет отдельных Git-репозиториев.
+
+## Запуск
 
 ```sh
-npm run lint
-npm run format:check
+npm run dev:task1
+```
+
+Первое задание откроется по адресу http://127.0.0.1:5174.
+
+Во втором терминале:
+
+```sh
+npm run dev:task2
+```
+
+Второе задание откроется по адресу http://127.0.0.1:5175. Команда `npm run dev` также запускает второе задание.
+
+## Проверки и сборка
+
+```sh
+npm run check
 npm run build
 npm run preview
 ```
 
-## Assignment criteria
+`check` проверяет форматирование, тесты JavaScript и ESLint для React. Сборка публикует task1 и task2 на одном GitHub Pages-сайте. Корневой адрес сайта также показывает React-страницу, чтобы существующая ссылка продолжала работать.
 
-| Requirement           | Where to find it                                                                                             |
-| --------------------- | ------------------------------------------------------------------------------------------------------------ |
-| React SPA             | `src/main.jsx` mounts `App` with React; section links navigate within one page.                              |
-| Name and image        | `Hero` introduces Aslan and renders the original `public/profile.svg` image with alternative text.           |
-| About Me              | `About` describes the student's learning focus and skills.                                                   |
-| Safe contact details  | `Contact` includes only the public GitHub profile, “Planet Earth”, and learning status.                      |
-| At least 3 components | `Header`, `Hero`, `About`, `Projects`, `ProjectCard`, `Contact`, and `Footer`, composed by `App`.            |
-| CSS styling           | Responsive layouts, typography, color palette, focus states, and reduced-motion support in `src/styles.css`. |
-| GitHub Pages          | `.github/workflows/deploy.yml` builds and deploys the app.                                                   |
+## Подготовка к защите и сдача
 
-`Projects` uses `useState` to filter the displayed cards. `ProjectCard` receives its content through props. Skill and project lists use stable keys.
+- [Объяснение первого задания](task1/DEFENSE-RU.md)
+- [Объяснение второго задания](task2/DEFENSE-RU.md)
+- [Скриншот React-приложения](task2/docs/screenshot.png)
+- [Все ссылки для сдачи](SUBMISSION.md)
 
-## Structure
-
-```text
-public/
-  favicon.svg
-  profile.svg
-src/
-  components/
-    Header.jsx
-    Hero.jsx
-    About.jsx
-    Projects.jsx
-    ProjectCard.jsx
-    Contact.jsx
-    Footer.jsx
-  App.jsx
-  main.jsx
-  styles.css
-```
-
-## Deployment
-
-The Pages publishing source is GitHub Actions. A push to `main` installs the locked dependencies, checks formatting and ESLint, builds `dist`, and deploys it. Vite's relative base keeps assets working under the repository URL.
-
-No private contact information, phone numbers, addresses, or API keys are included. The contact link is a public GitHub profile. The artwork is a monogram, not a photograph of a person. Typography uses DM Sans and DM Serif Display from Google Fonts with system fallbacks.
-
-## Submission
-
-Attach the repository URL, live GitHub Pages URL, and [the browser screenshot](docs/screenshot.png). Press Turn In before the deadline shown by the course platform: September 24, 2026 at 3:00 PM. Check the platform's timezone if it differs from your device.
-
-See `DEFENSE-RU.md` for an explanation of the components, props, state, and deployment.
-
-## References
-
-- [React: Your first component](https://react.dev/learn/your-first-component)
-- [React: State](https://react.dev/learn/state-a-components-memory)
-- [Vite: GitHub Pages deployment](https://vite.dev/guide/static-deploy.html#github-pages)
-- [GitHub: Creating a Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
-
-The layout and SVG artwork are original. The instructor's CodePen collection was treated as an optional inspiration resource, not a template dependency.
+Дополнительное вложение к первому заданию в чате не было предоставлено. Проект покрывает темы из присланного текста задания.

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f3ed" />
+    <meta
+      name="description"
+      content="Order a coffee and follow JavaScript's call stack, promises, tasks, and microtasks in a real execution trace."
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Async Café — A little coffee, a little JavaScript</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="#" aria-label="Async Café home"
+        ><span class="brand-symbol">a<span>c</span></span> async café<span
+          class="brand-dot"
+          >.</span
+        ></a
+      >
+      <div class="header-right">
+        <span class="course-label">A JAVASCRIPT EXPERIMENT</span
+        ><a
+          class="source-link"
+          href="https://github.com/Asslanito/aslan-react-portfolio/tree/main/task1"
+          target="_blank"
+          rel="noreferrer"
+          >View source <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <main id="main" class="wrap">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">
+            <span class="status-dot"></span> FRESHLY BREWED JAVASCRIPT
+          </p>
+          <h1>Good things take <em>an event loop.</em></h1>
+          <p class="intro-copy">
+            Order a coffee. Follow the code. See what runs now,<br
+              class="desktop-break"
+            />
+            what runs next, and what waits its turn.
+          </p>
+        </div>
+        <div class="intro-stamp" aria-hidden="true">
+          <span>ONE THREAD</span><strong>∞</strong
+          ><span>MANY POSSIBILITIES</span>
+        </div>
+      </section>
+      <section class="workspace" aria-label="Interactive coffee experiment">
+        <div class="order-panel panel">
+          <div class="panel-title">
+            <span class="step">01</span>
+            <h2>Your order</h2>
+            <span class="small-label">PICK YOUR FUEL</span>
+          </div>
+          <form id="order-form">
+            <fieldset class="drink-options">
+              <legend class="sr-only">Choose a coffee</legend>
+              <label class="drink-option"
+                ><input
+                  type="radio"
+                  name="drink"
+                  value="espresso"
+                  checked
+                /><span class="drink-card"
+                  ><span class="cup-icon espresso" aria-hidden="true">☕</span
+                  ><span
+                    ><strong>Espresso</strong
+                    ><small>Small cup. Big ideas.</small></span
+                  ><span class="drink-price">$3</span></span
+                ></label
+              >
+              <label class="drink-option"
+                ><input type="radio" name="drink" value="latte" /><span
+                  class="drink-card"
+                  ><span class="cup-icon latte" aria-hidden="true">☕</span
+                  ><span
+                    ><strong>Latte</strong
+                    ><small>A softer kind of focus.</small></span
+                  ><span class="drink-price">$5</span></span
+                ></label
+              >
+              <label class="drink-option"
+                ><input type="radio" name="drink" value="filter" /><span
+                  class="drink-card"
+                  ><span class="cup-icon filter" aria-hidden="true">☕</span
+                  ><span
+                    ><strong>Filter coffee</strong
+                    ><small>Keep the ideas flowing.</small></span
+                  ><span class="drink-price">$4</span></span
+                ></label
+              >
+            </fieldset>
+            <div class="brew-setting">
+              <label for="delay">Brewing time</label
+              ><output id="delay-value" for="delay">1.5 s</output
+              ><input
+                id="delay"
+                type="range"
+                min="500"
+                max="3000"
+                step="500"
+                value="1500"
+              />
+              <div class="range-labels">
+                <span>Quick sip</span><span>Slow brew</span>
+              </div>
+            </div>
+            <label class="failure-toggle"
+              ><input id="fail-order" type="checkbox" /><span
+                >Simulate an out-of-stock error</span
+              ><span class="toggle-track" aria-hidden="true"></span
+            ></label>
+            <button class="order-button" id="order-button" type="submit">
+              Place order <span aria-hidden="true">↗</span>
+            </button>
+            <p class="order-note">
+              A local simulation. No payment, no network request.
+            </p>
+          </form>
+          <div class="receipt" role="status" aria-live="polite">
+            <span class="receipt-label">AT THE COUNTER</span>
+            <p id="order-status">Ready when you are.</p>
+            <span id="order-detail"
+              >Choose a coffee to start the experiment.</span
+            >
+          </div>
+        </div>
+        <div class="trace-panel panel">
+          <div class="panel-title">
+            <span class="step">02</span>
+            <h2>Behind the counter</h2>
+            <span id="trace-status" class="live-badge">READY</span>
+          </div>
+          <div class="trace-toolbar">
+            <div
+              class="filters"
+              role="group"
+              aria-label="Filter execution trace"
+            >
+              <button type="button" data-filter="all" aria-pressed="true">
+                All</button
+              ><button type="button" data-filter="sync" aria-pressed="false">
+                Sync</button
+              ><button
+                type="button"
+                data-filter="microtask"
+                aria-pressed="false"
+              >
+                Microtasks</button
+              ><button type="button" data-filter="task" aria-pressed="false">
+                Tasks
+              </button>
+            </div>
+            <button id="clear-trace" class="text-button" type="button">
+              Clear
+            </button>
+          </div>
+          <div class="trace-head" aria-hidden="true">
+            <span>STEP / EXECUTION</span><span>ELAPSED</span>
+          </div>
+          <div id="trace-empty" class="trace-empty">
+            <span class="empty-loop" aria-hidden="true">↻</span>
+            <h3>A small order. A lot going on.</h3>
+            <p>
+              Your execution trace will appear here.<br />Try predicting what
+              runs first.
+            </p>
+            <div class="trace-legend">
+              <span><i class="legend-dot sync"></i> Sync</span
+              ><span><i class="legend-dot microtask"></i> Microtask</span
+              ><span><i class="legend-dot task"></i> Task</span>
+            </div>
+          </div>
+          <ol
+            id="trace-list"
+            class="trace-list"
+            aria-label="Execution trace"
+          ></ol>
+          <div class="trace-footer">
+            <span><span class="status-dot"></span> Real execution order</span
+            ><span>Timers show observed time, not a guarantee.</span>
+          </div>
+        </div>
+      </section>
+      <section class="session-strip" aria-label="Closure state">
+        <div>
+          <span class="eyebrow">A LITTLE MEMORY</span>
+          <h2>Same café. New order.</h2>
+          <p>A closure remembers these values between orders.</p>
+        </div>
+        <div class="session-stat">
+          <strong id="total-orders">0</strong><span>Orders placed</span>
+        </div>
+        <div class="session-stat">
+          <strong id="ready-orders">0</strong><span>Coffees served</span>
+        </div>
+        <div class="session-stat">
+          <strong id="failed-orders">0</strong><span>Orders declined</span>
+        </div>
+      </section>
+      <section class="how-section" aria-labelledby="how-heading">
+        <div class="section-heading">
+          <p class="eyebrow">THE RECIPE</p>
+          <h2 id="how-heading">What's actually happening?</h2>
+          <p>Seven concepts, one tiny coffee shop.</p>
+        </div>
+        <div class="concept-grid">
+          <article class="concept">
+            <span>01 / MEMORY</span>
+            <h3>Closures</h3>
+            <p>
+              <code>createOrderTracker()</code> keeps the order count private.
+              Its returned functions still access it after the outer function
+              returns.
+            </p>
+          </article>
+          <article class="concept">
+            <span>02 / RIGHT NOW</span>
+            <h3>Call stack</h3>
+            <p>
+              <code>placeOrder → getPrice → addTax</code>. Nested calls finish
+              from the inside out. Follow their enter and return messages in the
+              trace.
+            </p>
+          </article>
+          <article class="concept">
+            <span>03 / LATER</span>
+            <h3>Promises + async/await</h3>
+            <p>
+              A Promise represents brewing. Its executor runs immediately.
+              <code>await</code> pauses this function; the page stays
+              responsive. Rejection goes to <code>catch</code>.
+            </p>
+          </article>
+          <article class="concept">
+            <span>04 / TAKING TURNS</span>
+            <h3>Event loop</h3>
+            <p>
+              When the current task finishes and the stack is empty, queued
+              microtasks run before the next task. Our Promise and
+              <code>queueMicrotask</code> callbacks beat the zero-delay timer.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <span>Made by Aslan · Vanilla HTML, CSS & JavaScript</span
+      ><a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"
+        target="_blank"
+        rel="noreferrer"
+        >Explore the event loop ↗</a
+      >
+    </footer>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
