@@ -249,6 +249,68 @@
           </article>
         </div>
       </section>
+      <section class="batch-section" aria-labelledby="batch-title">
+        <div class="section-heading">
+          <p class="eyebrow">THE WHOLE COUNTER</p>
+          <h2 id="batch-title">Three tasks. Three private counters.</h2>
+          <p>
+            Each drink waits a random 500–2000 ms and has a 25% chance of
+            failing.
+          </p>
+        </div>
+        <div id="task-list" class="batch-grid" aria-live="polite"></div>
+        <div class="batch-actions">
+          <button type="button" data-run-mode="concurrent">
+            Run All Tasks
+          </button>
+          <button type="button" data-run-mode="sequential">
+            Run Sequentially
+          </button>
+        </div>
+        <p id="batch-status" role="status">
+          Choose a task or run the whole counter.
+        </p>
+        <div class="timing-comparison">
+          <p>Sequential: <strong id="sequential-time">Not run yet</strong></p>
+          <p>Concurrent: <strong id="concurrent-time">Not run yet</strong></p>
+        </div>
+        <p class="batch-explanation">
+          Sequential execution waits for each task before starting the next, so
+          the delays add up. Concurrent execution starts all timers together and
+          waits for every result with Promise.allSettled(), including failures.
+          Its duration is close to the longest delay. Random delays change each
+          run; compare several runs.
+        </p>
+      </section>
+      <section class="batch-section" aria-labelledby="demo-title">
+        <div class="section-heading">
+          <p class="eyebrow">PREDICT, THEN RUN</p>
+          <h2 id="demo-title">A separate event loop experiment.</h2>
+          <p>
+            Two timers, two Promise callbacks, and one async function. The
+            actual output is also written to the browser console.
+          </p>
+        </div>
+        <div class="demo-grid">
+          <div class="batch-card">
+            <h3>Expected output before running</h3>
+            <ol id="expected-output"></ol>
+          </div>
+          <div class="batch-card">
+            <h3>Actual output</h3>
+            <ol id="actual-output" aria-live="polite"></ol>
+          </div>
+        </div>
+        <div class="batch-actions">
+          <button id="run-event-loop" type="button">Run Event Loop Demo</button>
+        </div>
+        <p class="batch-explanation">
+          The call stack first runs Script start, Async start, and Script end.
+          Once it is empty, the queued Promise callbacks and the continuation
+          after await run as microtasks. The event loop then runs the two timer
+          tasks in their scheduled order.
+        </p>
+      </section>
     </main>
     <footer class="site-footer wrap">
       <span>Made by Aslan · Vanilla HTML, CSS & JavaScript</span
@@ -260,5 +322,6 @@
       >
     </footer>
     <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/runner.js"></script>
   </body>
 </html>
