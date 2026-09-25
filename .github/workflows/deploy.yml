@@ -30,6 +30,7 @@ jobs:
             package-lock.json
             task1/package-lock.json
             task2/package-lock.json
+            task3/package-lock.json
       - run: npm ci
       - run: npm run setup
       - run: npm run check

@@ -4,17 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "setup": "npm --prefix task1 ci && npm --prefix task2 ci",
+    "setup": "npm --prefix task1 ci && npm --prefix task2 ci && npm --prefix task3 ci",
     "dev": "npm run dev:task2",
     "dev:task1": "npm --prefix task1 run dev -- --port 5174 --strictPort",
     "dev:task2": "npm --prefix task2 run dev -- --port 5175 --strictPort",
     "test": "npm --prefix task1 test",
-    "lint": "npm --prefix task2 run lint",
+    "lint": "npm --prefix task2 run lint && npm --prefix task3 run lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run format:check && npm test && npm run lint",
     "build": "node scripts/build.mjs",
-    "preview": "node task2/node_modules/vite/bin/vite.js preview --host 127.0.0.1"
+    "preview": "node task2/node_modules/vite/bin/vite.js preview --host 127.0.0.1",
+    "dev:task3": "npm --prefix task3 run dev -- --port 5176 --strictPort"
   },
   "devDependencies": {
     "prettier": "^3.9.8"
