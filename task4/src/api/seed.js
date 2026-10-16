@@ -1,0 +1,73 @@
+export const seed = [
+  {
+    id: 'react-effects',
+    name: 'Make sense of React effects',
+    description:
+      'Build a small example that loads data when the selected item changes. Explain dependencies and clean up every pending request.',
+    course: 'JavaScript & React',
+    category: 'Practice',
+    priority: 'High',
+    status: 'In progress',
+    dueDate: '2026-10-22',
+    estimate: 90,
+    notes:
+      'Try switching between items quickly while requests are still loading.',
+    createdAt: '2026-10-12T09:00:00.000Z',
+  },
+  {
+    id: 'database-schema',
+    name: 'Sketch the library database',
+    description:
+      'Design tables for books, members and loans. Add primary keys and define how the tables relate.',
+    course: 'Databases',
+    category: 'Project',
+    priority: 'Medium',
+    status: 'To do',
+    dueDate: '2026-10-23',
+    estimate: 60,
+    notes: 'Consider what happens when a book has several physical copies.',
+    createdAt: '2026-10-12T10:00:00.000Z',
+  },
+  {
+    id: 'algorithm-review',
+    name: 'Review sorting algorithms',
+    description:
+      'Compare insertion sort, merge sort and quicksort using small examples and their time complexity.',
+    course: 'Algorithms',
+    category: 'Revision',
+    priority: 'High',
+    status: 'To do',
+    dueDate: '2026-10-24',
+    estimate: 45,
+    notes: 'Write down one situation where each algorithm is a good fit.',
+    createdAt: '2026-10-13T09:00:00.000Z',
+  },
+  {
+    id: 'interface-audit',
+    name: 'Give the interface a mobile check',
+    description:
+      'Review a responsive layout on a small screen. Check spacing, readable text, form labels and keyboard navigation.',
+    course: 'Web Design',
+    category: 'Practice',
+    priority: 'Low',
+    status: 'Done',
+    dueDate: '2026-10-25',
+    estimate: 30,
+    notes: 'Start at a width of 375 pixels and check for horizontal scrolling.',
+    createdAt: '2026-10-13T11:00:00.000Z',
+  },
+  {
+    id: 'presentation',
+    name: 'Prepare the project walkthrough',
+    description:
+      'Plan a short demonstration of the working project and the decisions behind its implementation.',
+    course: 'JavaScript & React',
+    category: 'Project',
+    priority: 'Medium',
+    status: 'To do',
+    dueDate: '2026-10-26',
+    estimate: 40,
+    notes: 'Show a loading state, a failed request and a successful retry.',
+    createdAt: '2026-10-14T09:00:00.000Z',
+  },
+]

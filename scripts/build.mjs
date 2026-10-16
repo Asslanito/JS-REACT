@@ -10,7 +10,7 @@ if (relative(root, output) !== 'dist') {
   throw new Error('Unexpected build output directory.')
 }
 
-for (const task of ['task1', 'task2', 'task3', 'midterm']) {
+for (const task of ['task1', 'task2', 'task3', 'midterm', 'task4']) {
   const project = join(root, task)
   const result = spawnSync(
     process.execPath,
@@ -34,10 +34,10 @@ await rm(output, { recursive: true, force: true })
 await mkdir(output, { recursive: true })
 await cp(join(root, 'task2/dist'), output, { recursive: true })
 
-for (const task of ['task1', 'task2', 'task3', 'midterm']) {
+for (const task of ['task1', 'task2', 'task3', 'midterm', 'task4']) {
   await cp(join(root, task, 'dist'), join(output, task), { recursive: true })
 }
 
 console.log(
-  'Built task1, task2, task3, midterm, and the existing portfolio entry page.',
+  'Built task1, task2, task3, midterm, task4, and the existing portfolio entry page.',
 )
