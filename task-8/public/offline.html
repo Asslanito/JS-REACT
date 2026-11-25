@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Offline - ShopDesk</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:system-ui,sans-serif;background:#eef2ff;color:#1e1b4b;padding:16px}
+.wrap{max-width:900px;margin:0 auto}
+.card{background:#fff;border-radius:16px;padding:28px 20px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.icon{font-size:56px}h1{margin:8px 0}p{color:#475569;line-height:1.5}
+button{min-height:48px;padding:0 24px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-size:16px;cursor:pointer;margin-top:8px}
+#s{font-size:14px}
+h2{margin:28px 0 4px}
+input{width:100%;min-height:44px;font-size:16px;padding:8px 12px;border:1px solid #cbd5e1;border-radius:8px;margin:8px 0 16px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))}
+.p{background:#fff;border-radius:12px;padding:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow-wrap:anywhere}
+.p img{width:100%;height:140px;object-fit:contain}
+.p h3{font-size:15px;margin:6px 0}.p .m{font-size:13px;color:#64748b;margin:0}.p .pr{font-weight:700;color:#4f46e5;margin:4px 0 0}
+</style></head><body><div class="wrap">
+<div class="card">
+  <div class="icon">📡</div><h1>You're offline</h1>
+  <p>No internet connection. Products you viewed earlier are still available below.</p>
+  <button id="r">Retry Connection</button><div id="s" role="status"></div>
+</div>
+<h2 id="t" hidden></h2><p id="u" hidden></p>
+<input id="q" placeholder="Search saved products" hidden>
+<div class="grid" id="g"></div>
+</div>
+<script>
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let items=[];
+async function load(){
+  if(!('caches' in window))return;
+  const map=new Map();let upd=0;
+  for(const n of (await caches.keys()).filter(n=>n.startsWith('api-'))){
+    const c=await caches.open(n);
+    for(const req of await c.keys()){
+      if(!req.url.includes('/products'))continue;
+      const res=await c.match(req);if(!res)continue;
+      try{
+        const j=await res.clone().json();
+        (j.products||[]).forEach(p=>map.set(p.id,p));
+        if(j.id&&j.title)map.set(j.id,j);
+        upd=Math.max(upd,Number(res.headers.get('x-sw-fetched-at')||0));
+      }catch(e){}
+    }
+  }
+  items=[...map.values()];
+  if(!items.length)return;
+  const t=document.getElementById('t');t.hidden=false;t.textContent='Saved products ('+items.length+')';
+  if(upd){const u=document.getElementById('u');u.hidden=false;u.textContent='Last updated: '+new Date(upd).toLocaleString();}
+  document.getElementById('q').hidden=false;render('');
+}
+function render(q){
+  q=q.trim().toLowerCase();
+  document.getElementById('g').innerHTML=items.filter(p=>p.title.toLowerCase().includes(q)).map(p=>
+    '<div class="p"><img src="'+esc(p.thumbnail)+'" alt="" loading="lazy"><h3>'+esc(p.title)+'</h3><p class="m">'+esc(p.category)+'</p><p class="pr">$'+esc(p.price)+'</p></div>').join('');
+}
+document.getElementById('q').oninput=e=>render(e.target.value);
+document.getElementById('r').onclick=async()=>{
+  const s=document.getElementById('s');s.textContent='Checking...';
+  try{await fetch('/manifest.webmanifest',{cache:'no-store'});location.href='/';}
+  catch(e){s.textContent='Still offline. Try again later.';}
+};
+addEventListener('online',()=>location.href='/');
+load();
+</script></body></html>

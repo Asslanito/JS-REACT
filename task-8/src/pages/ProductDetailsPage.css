@@ -1,0 +1,9 @@
+.details { display: grid; gap: 16px; }
+.details > button:first-child { justify-self: start; }
+.details-body { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
+.details-image { width: 100%; max-height: 360px; object-fit: contain; }
+.details-info { display: grid; gap: 8px; align-content: start; min-width: 0; overflow-wrap: anywhere; }
+.details-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+@media (min-width: 768px) {
+  .details-body { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); }
+}
